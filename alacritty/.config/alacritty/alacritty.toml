@@ -9,10 +9,10 @@ opacity = 0.3
 blur = true
 
 [font]
-normal = { family = "MapleMono", style = "Regular" }
-bold = { family = "MapleMono", style = "Bold" }
-italic = { family = "MapleMono", style = "Italic" }
-bold_italic = { family = "MapleMono", style = "Bold Italic" }
+normal = { family = "MapleMono NF", style = "Regular" }
+bold = { family = "MapleMono NF", style = "Bold" }
+italic = { family = "MapleMono NF", style = "Italic" }
+bold_italic = { family = "MapleMono NF", style = "Bold Italic" }
 size = 12
 
 [terminal]
