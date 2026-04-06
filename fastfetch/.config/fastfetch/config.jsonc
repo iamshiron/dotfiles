@@ -68,6 +68,11 @@
             "keyColor": "green"
         },
         {
+            "type": "gpu",
+            "key": "󰢮 GPU",
+            "keyColor": "green"
+        },
+        {
             "type": "memory",
             "key": "󰍛 Mem",
             "keyColor": "green"
@@ -81,11 +86,42 @@
         },
         {
             "type": "disk",
+            "key": "󰋊 Data",
+            "folders": "/mnt/data",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "disk",
+            "key": "󰋊 Stm ",
+            "folders": "/mnt/steam",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "disk",
+            "key": "󰋊 Pool",
+	    "folders": "/mnt/media",
+            "keyColor": "cyan",
+	    "showSubvolumes": false
+        },
+        {
+            "type": "disk",
             "key": "󰋊 Podm",
             "folders": "/mnt/docker",
             "keyColor": "cyan"
         },
         "break",
+        {
+            "type": "command",
+            "key": "󰡄 Cont",
+            "keyColor": "yellow",
+            "text": "podman ps -q | wc -l"
+        },
+        {
+            "type": "command",
+            "key": "󰋚 Imgs",
+            "keyColor": "yellow",
+            "text": "podman images -q | wc -l"
+        },
         {
             "type": "localip",
             "key": "󰩟 IP  ",
