@@ -1,0 +1,71 @@
+[general]
+live_config_reload = true
+
+[window]
+dimensions = { columns = 130, lines = 35 }
+decorations = "Full"
+padding = { x = 8, y = 8 }
+opacity = 0.3
+blur = true
+
+[font]
+normal = { family = "MapleMono", style = "Regular" }
+bold = { family = "MapleMono", style = "Bold" }
+italic = { family = "MapleMono", style = "Italic" }
+bold_italic = { family = "MapleMono", style = "Bold Italic" }
+size = 12
+
+[terminal]
+shell = "/usr/bin/fish"
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+
+[colors.primary]
+foreground = "#D5D8FB"
+background = "#16162A"
+
+[colors.selection]
+text = "CellForeground"
+background = "#3E3E73"
+
+[colors.normal]
+black   = "#2F2F4F"
+red     = "#FF5A8F"
+green   = "#2DE2A6"
+yellow  = "#FFD06B"
+blue    = "#6BBAFF"
+magenta = "#C774FA"
+cyan    = "#00E5FF"
+white   = "#A9B1D6"
+
+[colors.bright]
+black   = "#49497A"
+red     = "#FF84B5"
+green   = "#63F2C8"
+yellow  = "#FFE599"
+blue    = "#8FCCFF"
+magenta = "#E29EFE"
+cyan    = "#66F0FF"
+white   = "#E0E4FF"
+
+[colors.search.matches]
+foreground = "#16162A"
+background = "#00E5FF"
+
+[colors.search.focused_match]
+foreground = "#16162A"
+background = "#FFD06B"
+
+[colors.footer_bar]
+foreground = "#D5D8FB"
+background = "#2F2F4F"
+
+[colors.hints.start]
+foreground = "#16162A"
+background = "#FFD06B"
+
+[colors.hints.end]
+foreground = "#16162A"
+background = "#FF5A8F"
+
