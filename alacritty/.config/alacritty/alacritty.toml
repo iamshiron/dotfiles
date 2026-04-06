@@ -2,7 +2,7 @@
 live_config_reload = true
 
 [window]
-dimensions = { columns = 130, lines = 35 }
+dimensions = { columns = 115, lines = 30 }
 decorations = "Full"
 padding = { x = 8, y = 8 }
 opacity = 0.3
