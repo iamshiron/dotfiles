@@ -122,6 +122,12 @@
             "keyColor": "yellow",
             "text": "podman images -q | wc -l"
         },
+	{
+            "type": "command",
+            "key": "󰓡 Vols",
+            "keyColor": "yellow",
+            "text": "podman system df | awk '/Local Volumes/ {print $3, $5}' | sed 's/ / (/' | sed 's/$/)/'"
+        },
         {
             "type": "localip",
             "key": "󰩟 IP  ",
