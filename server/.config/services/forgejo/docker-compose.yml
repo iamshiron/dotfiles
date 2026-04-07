@@ -1,0 +1,24 @@
+name: forgejo
+services:
+  server:
+    image: codeberg.org/forgejo/forgejo:14
+    container_name: forgejo
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    networks:
+      - forgejo
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - forgejo_data:/data
+    ports:
+      - '3000:3000'
+      - '3001:22'
+
+networks:
+  forgejo:
+    external: false
+
+volumes:
+  forgejo_data:

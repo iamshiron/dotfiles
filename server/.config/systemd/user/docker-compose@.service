@@ -1,0 +1,19 @@
+[Unit]
+Description=Podman Compose Application (%i)
+Requires=podman.service
+After=podman.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+EnvironmentFile=-%h/.local/share/secrets/%i.env
+WorkingDirectory=%h/.config/services/%i
+
+Environment=DOCKER_HOST=unix://%t/podman/podman.sock
+
+ExecStart=%h/.docker/cli-plugins/docker-compose up -d --remove-orphans
+ExecStop=%h/.docker/cli-plugins/docker-compose down
+
+[Install]
+WantedBy=default.target
+
