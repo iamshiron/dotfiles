@@ -36,9 +36,10 @@
             "keyColor": "blue"
         },
         {
-            "type": "packages",
+            "type": "command",
             "key": "󰏖 Pkg",
-            "keyColor": "blue"
+            "keyColor": "blue",
+            "text": "pacman -Q | wc -l | tr -d '\\n' && echo -n ' (pacman), ' && uv tool list 2>/dev/null | grep -v '^-' | sed '/^$/d' | wc -l | tr -d '\\n' && echo -n ' (uv), ' && pnpm ls -g --depth=0 2>/dev/null | sed '1d;/^$/d' | wc -l | tr -d '\\n' && echo ' (pnpm)'"
         },
         "break",
         {
