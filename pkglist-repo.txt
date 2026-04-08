@@ -44,7 +44,6 @@ networkmanager
 noto-fonts-cjk
 obs-studio
 obsidian
-opencode
 partitionmanager
 pass
 pipewire

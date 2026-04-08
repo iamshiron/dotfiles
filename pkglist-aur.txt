@@ -8,6 +8,7 @@ maplemono-nf
 maplemono-ttf
 mergerfs-bin
 millennium
+opencode
 paru
 spotify
 vesktop
