@@ -1,0 +1,16 @@
+WallpaperEngine_kde6
+bibata-cursor-theme-bin
+bs-manager-git
+dotnet-host-bin
+jetbrains-toolbox
+klassy-bin
+maplemono-nf
+maplemono-ttf
+mergerfs-bin
+millennium
+paru
+spotify
+vesktop
+visual-studio-code-bin
+xrizer
+zen-browser-bin
