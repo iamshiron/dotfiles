@@ -34,7 +34,6 @@ konsole
 less
 libpulse
 libreoffice-fresh
-libva-nvidia-driver
 linux
 linux-firmware
 linux-headers
@@ -43,7 +42,6 @@ neovim
 network-manager-applet
 networkmanager
 noto-fonts-cjk
-nvidia-open-dkms
 obs-studio
 obsidian
 opencode
