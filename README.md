@@ -1,72 +1,77 @@
 # Dotfiles
 
-Personal configuration files for Arch Linux system running fish shell.
+Personal configuration for an Arch Linux workstation with KDE Plasma, managed via GNU Stow.
 
 ## Preview
 
 ![Desktop](./assets/desktop.png)
 
-## System
+## Capabilities
 
-- **OS**: Arch Linux (kernel 6.19.11-arch1-1)
-- **Shell**: fish
-- **Terminal**: Alacritty
-- **Font**: MapleMono NF (12pt)
+- **Shell environment** — fish shell with Starship prompt, startup benchmarking, uv/pnpm path setup, and Podman alias
+- **Terminal** — Alacritty with translucent background, blur, custom purple/dark color scheme, and blinking beam cursor
+- **System overview** — fastfetch dashboard displaying hardware info, disk usage across multiple mount points, Podman container/image/volume counts, and local IP
+- **KDE Plasma desktop** — Klassy widget style with purple accent theme, bottom panel layout (launcher, pager, icon tasks, system tray, clock), KWin tiling rules (25/50/25 split), and animated Wallpaper Engine backgrounds
+- **Container management** — Podman configured with overlay storage driver and persistent volume path (`/mnt/docker/volumes`), plus a systemd template unit for declarative per-service compose stacks
+- **Self-hosted services** — Forgejo (Git hosting) defined as a Podman Compose stack, managed via the systemd template
+- **Audio processing** — Easy Effects preset for the Audio-Technica M50X microphone with noise suppression (RNNoise), gate, EQ, de-esser, compressor, and limiter
+- **Package provisioning** — Maintained lists of official repo, AUR, and NVIDIA packages for full system reproduction
+- **AUR helper setup** — Script to bootstrap `paru` from source
+
+## Stack
+
+Arch Linux / KDE Plasma 6 / fish / Alacritty / Starship / fastfetch / Podman / systemd / Easy Effects
 
 ## Structure
 
 ```
 .
-├── alacritty/        # Alacritty terminal configuration
-├── fastfetch/        # Fastfetch system info display
-├── fish/             # Fish shell configuration
-├── podman/           # Podman container configuration
-└── starship/         # Starship prompt configuration
+├── alacritty/        # Terminal emulator config
+├── easy-effects/     # Audio processing presets
+├── fastfetch/        # System info dashboard
+├── fish/             # Shell config and aliases
+├── kde/              # Plasma desktop, KWin, color scheme
+├── opencode/         # CLI tool command definitions
+├── podman/           # Container engine config
+├── server/           # Self-hosted service compose files and systemd units
+├── starship/         # Shell prompt config
+├── pkglist-repo.txt  # Official Arch packages
+├── pkglist-aur.txt   # AUR packages
+├── pkglist-nvidia.txt
+└── install-paru.sh   # AUR helper bootstrap
 ```
 
-## Installation
+## Usage
 
-1. Clone the repository:
-   ```bash
-   git clone <repo-url> ~/.dotfiles
-   cd ~/.dotfiles
-   ```
+Clone and symlink configurations with Stow:
 
-2. Create symlinks to configuration files:
-   ```bash
-   stow alacritty fastfetch fish podman starship
-   ```
+```bash
+git clone <repo-url> ~/.dotfiles
+cd ~/.dotfiles
+stow alacritty easy-effects fastfetch fish kde opencode podman server starship
+```
 
-3. Install required packages:
-   - `alacritty`
-   - `fastfetch`
-   - `fish`
-   - `starship`
-   - `podman`
-   - `maple-mono-nf` (or set your preferred font)
+Install all tracked packages:
 
-## Configuration
+```bash
+# Official repos
+sudo pacman -S --needed - < pkglist-repo.txt
 
-### Alacritty
-- Window dimensions: 130x35
-- Opacity: 0.3 with blur
-- Custom color scheme with purple/dark theme
-- Shell: /usr/bin/fish
+# AUR (requires paru or similar helper)
+paru -S --needed - < pkglist-aur.txt
+```
 
-### Starship
-- Powerline-style prompt with colored segments
-- Shows: OS, user, directory, git branch, languages, docker context, time
-- Active on all prompts
+Bootstrap the AUR helper:
 
-### Fastfetch
-- System information display on shell startup
-- Shows OS, kernel, uptime, packages, shell, terminal, CPU, GPU, memory, disk usage
-- Displays running containers, images, and volumes
-- Shows local IP address
+```bash
+bash install-paru.sh
+```
 
-### Podman
-- Default volume path: `/mnt/docker/volumes`
-- Docker alias mapped to podman
+Enable a self-hosted service:
+
+```bash
+systemctl --user enable --now docker-compose@forgejo
+```
 
 ## License
 
