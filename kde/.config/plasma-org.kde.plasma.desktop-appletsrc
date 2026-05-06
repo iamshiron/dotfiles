@@ -162,8 +162,26 @@ plugin=org.kde.plasma.icontasks
 launchers=
 separateLaunchers=false
 
+[Containments][56][Applets][84]
+immutability=1
+plugin=org.kde.plasma.colorpicker
+
+[Containments][56][Applets][84][Configuration]
+popupHeight=325
+popupWidth=324
+
+[Containments][56][Applets][84][Configuration][ConfigDialog]
+DialogHeight=630
+DialogWidth=810
+
+[Containments][56][Applets][84][Configuration][General]
+history=#a78bfa,#1f2518,#ef323d,#0d1117,#4a5675,#0d1117,#623637
+
+[Containments][56][Applets][84][Shortcuts]
+global=Meta+Ctrl+Shift+C
+
 [Containments][56][General]
-AppletOrder=57;58;79;60;74;75
+AppletOrder=57;58;79;60;84;74;75
 
 [Containments][81]
 ItemGeometries-2560x1440=
@@ -223,6 +241,10 @@ lastScreen=2
 location=0
 plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
+
+[Containments56Appletsts][84][Configuration][General]
+compactPreviewCount=0
+history=#000000
 
 [ScreenMapping]
 itemsOnDisabledScreens=1,06f01e46-8fe3-4326-ad9f-a03a0ea73416,6,desktop:/steam.desktop,desktop:/chisa-wuwa-wuthering-waves-art-4k-wallpaper-uhdpaper.com-32@3@d.jpg,desktop:/Screenshot_20260405_133812.png,desktop:/Screenshot_20260405_141254.png,desktop:/arch-vr.json,desktop:/Screenshot_20260405_133640.png,0,06f01e46-8fe3-4326-ad9f-a03a0ea73416,2,desktop:/Screenshot_20260405_065632.png,desktop:/Screenshot_20260404_235235.png
