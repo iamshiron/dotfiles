@@ -21,6 +21,26 @@
                 "@bitbonsai/mcpvault@latest",
                 "/home/shiron/Notes/Notes"
             ]
+        },
+        "rider": {
+            "type": "remote",
+            "url": "http://127.0.0.1:64342/sse",
+            "enabled": true
+        },
+        "shadcn": {
+            "type": "local",
+            "command": [
+                "pnpx",
+                "shadcn@latest",
+                "mcp"
+            ]
+        },
+        "playwright": {
+            "type": "local",
+            "command": [
+                "pnpx",
+                "@playwright/mcp@latest"
+            ]
         }
     }
 }
