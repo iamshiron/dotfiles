@@ -73,6 +73,10 @@ Enable a self-hosted service:
 systemctl --user enable --now docker-compose@forgejo
 ```
 
+## Themes Used
+### [Lavai](https://github.com/b0o/lavi)
+Used for Alacritty, Ghostty and OpenCode
+
 ## License
 
 MIT
