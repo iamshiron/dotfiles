@@ -147,8 +147,8 @@ View Style=DetailTree
 BinaryUnitDialect=2
 
 [PreviewSettings]
-EnableRemoteFolderThumbnail=false
-MaximumRemoteSize=20971520
+EnableRemoteFolderThumbnail=true
+MaximumRemoteSize=104857600
 
 [WM]
 activeBackground=70,75,81,191

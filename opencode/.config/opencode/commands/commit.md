@@ -39,7 +39,7 @@ Before staging, ensure the codebase is formatted based on the project type:
 Wait for the formatting script to finish executing.
 
 ### Step 4: Stage and Commit
-1. Stage all the files (including the newly formatted changes).
+1. ALWAYS use `git add -A` to stage all files (including the newly formatted changes), unless the user explicitly instructs otherwise.
 2. Commit the changes using the exact message you drafted in Step 2.
 3. Verify that the commit was successful and output the final commit log.
 
