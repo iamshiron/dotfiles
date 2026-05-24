@@ -23,3 +23,11 @@ shell = "/usr/bin/fish"
 [cursor]
 style = { shape = "Beam", blinking = "On" }
 
+[colors.cursor]
+text = "#25213B"
+cursor = "#e0e0e0"
+
+[colors.vi_mode_cursor]
+text = "#25213B"
+cursor = "#e0e0e0"
+
