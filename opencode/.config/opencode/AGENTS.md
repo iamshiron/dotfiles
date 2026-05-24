@@ -35,6 +35,12 @@ Always abide to these coding conventions.
 - **Startup / one-time:** Fine — boxing is acceptable.
 - **Loop / hot-path / general runtime:** Avoid it. Use generics, `Span<T>`, `stackalloc`, or other zero-alloc alternatives.
 
+**Prefer immutability and local state.** Avoid global mutable state with side effects. Prefer immutable objects, local scoped state, and pure functions. If shared state is necessary, make it explicit and encapsulated.
+
+**Prefer arrays over `List<T>`** when the data is generated once and doesn't change. Only use `List<T>` when elements need to be added or removed after creation.
+
+**LINQ > `foreach` > `for`.** Prefer LINQ for queries and transformations — it's more readable and expressive. If a manual loop is clearer, prefer `foreach` over `for`. The only exception: hot paths — use `for (var i = 0; ...)` to avoid enumerator allocations.
+
 ### Language Features (.NET 10 / C# 12+)
 
 **File-scoped namespaces** — always, never block-scoped:
