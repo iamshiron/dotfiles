@@ -41,6 +41,8 @@ Always abide to these coding conventions.
 
 **LINQ > `foreach` > `for`.** Prefer LINQ for queries and transformations — it's more readable and expressive. If a manual loop is clearer, prefer `foreach` over `for`. The only exception: hot paths — use `for (var i = 0; ...)` to avoid enumerator allocations.
 
+**Prefer enums over strings** for fixed sets of values. Avoid magic numbers and magic strings — extract them into named constants or enum members.
+
 ### Language Features (.NET 10 / C# 12+)
 
 **File-scoped namespaces** — always, never block-scoped:
