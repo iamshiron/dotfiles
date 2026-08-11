@@ -9,6 +9,7 @@ services:
     restart: always
     networks:
       - forgejo
+      - proxy_network
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - forgejo_data:/data
@@ -19,6 +20,8 @@ services:
 networks:
   forgejo:
     external: false
+  proxy_network:
+    external: true
 
 volumes:
   forgejo_data:
