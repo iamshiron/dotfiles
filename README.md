@@ -26,7 +26,7 @@ Terminal emulator configuration.
 
 Terminal emulator configuration (alternative to Alacritty).
 
-- Window: 115x30, 8px padding, 30% opacity with blur
+- Window: 115x30, 8px padding, 90% opacity with blur
 - Font: MapleMono NF at 12pt
 - Shell: fish
 - Cursor: blinking bar
@@ -43,6 +43,8 @@ Shell configuration (`config.fish`).
 - Sets `$PNPM_HOME` and adds it to `$PATH`
 - Activates mise
 - Adds `~/.opencode/bin` to `$PATH`
+- Adds pnpm and Bun executable paths to `$PATH`
+- Routes Docker-compatible clients to the rootless Podman socket
 
 ### starship
 
@@ -63,9 +65,9 @@ Displays: OS, kernel, uptime, package counts (pacman, uv, pnpm), shell, terminal
 
 KDE Plasma desktop configuration.
 
-- **kdeglobals**: Purple accent (`#926EE4`), Klassy widget style, Fredoka font (UI), Maple Mono (fixed), Papirus-Dark icons, Klassy Kit Dark bottom panel look-and-feel
+- **kdeglobals**: Purple accent (`#926EE4`), Fredoka font (UI), Maple Mono (fixed), Papirus-Dark icons, Klassy Kit Dark bottom panel look-and-feel, Ghostty as the default terminal
 - **kwinrc**: Single virtual desktop, tiling layout with 25/50/25 horizontal split (4px padding), window buttons: left (minimize, fullscreen, shade), right (help, keep above, keep below, maximize, close)
-- **plasma-org.kde.plasma.desktop-appletsrc**: Bottom panel with Kickoff launcher, pager, icon tasks, system tray (KDE Connect, vault, keyboard, screen, camera, notifications, clipboard, network, keyboard layout, device notifier, weather, printing, volume, brightness, battery, Bluetooth, media controller), color picker, digital clock (24h, ISO date, week numbers), show-desktop button. Wallpaper Engine plugin on both monitors
+- **plasma-org.kde.plasma.desktop-appletsrc**: Bottom panel with Kickoff launcher, pager, icon tasks, system tray (KDE Connect, vault, keyboard, screen, camera, notifications, clipboard, network, keyboard layout, device notifier, weather, printing, volume, brightness, battery, Bluetooth, media controller, clock), color picker, digital clock (24h, ISO date, week numbers), show-desktop button. Wallpaper Engine plugin on both monitors
 - **plasma-localerc**: `en_US.UTF-8` with `de_DE` measurement and paper formats
 
 ### podman
@@ -79,7 +81,7 @@ Container engine configuration.
 
 Self-hosted service definitions and systemd management.
 
-- **forgejo/**: Podman Compose stack for Forgejo 14 (port 3000 HTTP, port 3001 SSH, named volume for data)
+- **forgejo/**: Podman Compose stack for Forgejo 14 (port 3000 HTTP, port 3001 SSH, named volume for data, external `proxy_network` access for reverse-proxy routing)
 - **docker-compose@.service**: Systemd template unit that runs `docker-compose up -d` per service from `~/.config/services/<name>/`, loads secrets from `~/.local/share/secrets/<name>.env`
 
 ### easy-effects
@@ -93,16 +95,19 @@ Audio processing presets for Audio-Technica ATH-M50X.
 
 CLI coding agent configuration.
 
-- **opencode.json**: Explore agent configured with subagent mode. MCP servers defined (all disabled by default): HeroUI Native, Obsidian vault, JetBrains Rider, shadcn, Playwright, Avalonia UI
-- **AGENTS.md**: Coding conventions document (C#/.NET naming, project structure, backend/frontend patterns, testing, performance, documentation)
+- **opencode.json**: Enables LSP support and configures dedicated Explore, General, Title, and Compaction agents. MCP servers defined (all disabled by default): HeroUI Native, Obsidian vault, JetBrains Rider, shadcn, Playwright, Avalonia UI
+- **AGENTS.md**: Coding conventions document (C#/.NET naming, project structure, backend/frontend patterns, xUnit testing, performance, documentation, Nx monorepo conventions, and commit workflow)
 - **themes/lavi.json**: Custom Lavi theme (purple/dark color scheme)
-- **commands/**: Six custom commands:
+- **commands/**: Nine custom commands:
   - `commit` — Analyzes changes and creates a conventional commit
   - `create-tests` — Generates unit tests for a specified scope
   - `create-note` — Expands a rough idea into an Obsidian brain-dump note
   - `create-documentation` — Generates a README via parallelized codebase analysis
-  - `create-obsidian-wiki` — Converts HTML to Markdown and saves to Obsidian vault
-  - `migrate-db` — Analyzes model changes and creates an EF Core migration
+   - `create-obsidian-wiki` — Converts HTML to Markdown and saves to Obsidian vault
+   - `migrate-db` — Analyzes model changes and creates an EF Core migration
+   - `obsidian-read-plan` — Locates and summarizes an Obsidian plan with severity ratings
+   - `obsidian-save-plan` — Persists an in-context plan as structured Obsidian Markdown
+   - `obsidian-update-plan` — Marks completed plan items and links their matching commits
 
 ## Package Lists
 
