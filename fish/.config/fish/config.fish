@@ -19,3 +19,13 @@ mise activate fish | source
 
 # opencode
 fish_add_path /home/shiron/.opencode/bin
+
+# pnpm
+fish_add_path /home/shiron/.local/share/pnpm/bin
+
+# Podman / Docker
+set --export DOCKER_HOST "unix:///run/user/$(id -u)/podman/podman.sock"
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
