@@ -4,7 +4,7 @@ window-height = 30
 window-decoration = auto
 window-padding-x = 8
 window-padding-y = 8
-background-opacity = 0.3
+background-opacity = 0.9
 background-blur = true
 
 # Font
@@ -20,4 +20,3 @@ cursor-style-blink = true
 
 # Theme
 theme = lavi.conf
-

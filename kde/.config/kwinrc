@@ -9,6 +9,18 @@ BorderActivate=9
 [Effect-windowview]
 BorderActivateAll=3
 
+[Tiling][4dba744b-c789-42ba-9e3f-713ad5aa67ed][4f05d0c1-1273-4e10-a0c0-5f251e36fd56]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][4dba744b-c789-42ba-9e3f-713ad5aa67ed][bbe4a5a1-252b-4c1a-b824-8092e970b3fd]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][897adb26-a7f3-4f40-b007-279c16ff713a][]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][897adb26-a7f3-4f40-b007-279c16ff713a][4daf2180-a6eb-468c-aaee-4eb79fe4b052]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
@@ -22,6 +34,14 @@ padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][897adb26-a7f3-4f40-b007-279c16ff713a][bbe4a5a1-252b-4c1a-b824-8092e970b3fd]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][b0fe1046-76e2-40e4-b48f-4790077ce981][4f05d0c1-1273-4e10-a0c0-5f251e36fd56]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][b0fe1046-76e2-40e4-b48f-4790077ce981][bbe4a5a1-252b-4c1a-b824-8092e970b3fd]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 

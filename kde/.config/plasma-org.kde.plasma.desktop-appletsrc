@@ -128,8 +128,8 @@ immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][56][Applets][60][General]
-extraItems=org.kde.plasma.vault,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.weather,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.mediacontroller,org.kde.kdeconnect
-knownItems=org.kde.plasma.vault,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.weather,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.mediacontroller,org.kde.kdeconnect
+extraItems=org.kde.plasma.vault,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.weather,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.kclock_1x2
+knownItems=org.kde.plasma.vault,org.kde.plasma.keyboardindicator,org.kde.kscreen,org.kde.plasma.cameraindicator,org.kde.plasma.notifications,org.kde.plasma.manage-inputmethod,org.kde.plasma.clipboard,org.kde.plasma.brightness,org.kde.plasma.networkmanagement,org.kde.plasma.battery,org.kde.plasma.keyboardlayout,org.kde.plasma.devicenotifier,org.kde.plasma.weather,org.kde.plasma.printmanager,org.kde.plasma.bluetooth,org.kde.plasma.volume,org.kde.plasma.mediacontroller,org.kde.kdeconnect,org.kde.plasma.kclock_1x2
 
 [Containments][56][Applets][74]
 immutability=1
@@ -179,7 +179,7 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][56][Applets][84][Configuration][General]
-history=#a78bfa
+history=#1b1221,#150a1b,#a78bfa
 
 [Containments][56][Applets][84][Shortcuts]
 global=Meta+Ctrl+Shift+C
@@ -207,8 +207,8 @@ Fps=30
 PauseMode=2
 SortMode=1
 SteamLibraryPath[$e]=file:///mnt/steam/SteamLibrary
-WallpaperSource[$e]=file:///mnt/steam/SteamLibrary/steamapps/workshop/content/431960/3611416056/chisaQb1test.mp4+video
-WallpaperWorkShopId=3611416056
+WallpaperSource[$e]=file:///mnt/steam/SteamLibrary/steamapps/workshop/content/431960/3608932855/202511201335_apo8_prob4_chf3.mp4+video
+WallpaperWorkShopId=3608932855
 
 [Containments][81][Wallpaper][org.kde.image][General]
 Image=file:///usr/share/wallpapers/Flow/

@@ -107,7 +107,10 @@ ForegroundVisited=155,89,182
 [General]
 AccentColor=146,110,228
 ColorSchemeHash=1904b1b7193adcbf38f157a5af704aa5761fae58
+DeviceLedsAccentColored=false
 LastUsedCustomAccentColor=146,110,228
+TerminalApplication=/usr/bin/ghostty --gtk-single-instance=true
+TerminalService=com.mitchellh.ghostty.desktop
 XftAntialias=true
 XftHintStyle=hintslight
 XftSubPixel=none
@@ -122,9 +125,9 @@ Theme=Papirus-Dark
 
 [KDE]
 LookAndFeelPackage=org.kde.klassykitedarkbottompanel.desktop
+ShowDeleteCommand=false
 contrast=4
 frameContrast=0.2
-widgetStyle=Klassy
 
 [KFileDialog Settings]
 Allow Expansion=false
@@ -140,7 +143,7 @@ Sort by=Name
 Sort directories first=true
 Sort hidden files last=false
 Sort reversed=false
-Speedbar Width=140
+Speedbar Width=294
 View Style=DetailTree
 
 [Locale]
