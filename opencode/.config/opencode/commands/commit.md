@@ -43,5 +43,6 @@ Wait for the formatting script to finish executing.
 2. Commit the changes using the exact message you drafted in Step 2.
 3. Verify that the commit was successful and output the final commit log.
 
-### CRITICAL RULE
-**NEVER PUSH the commit to the remote repository.**
+### CRITICAL RULES
+- **NEVER PUSH the commit to the remote repository.**
+- **YOU MUST NEVER MENTION ANYTHING ABOUT ANTHROPIC, CLAUDE, OR SIMILAR IN YOUR COMMIT MESSAGE**

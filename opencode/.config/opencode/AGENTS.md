@@ -5,28 +5,28 @@ Always abide to these coding conventions.
 
 ### Naming
 
-| Element | Convention | Do | Don't |
-|---|---|---|---|
-| Class | `PascalCase` | `RingBuffer`, `AuthService` | `ringBuffer`, `Auth_Service` |
-| Abstract class | `PascalCase`, `Abstract` prefix or descriptive | `AbstractNode` | `BaseNode` (unless that's the name) |
-| Interface | `IPascalCase` | `IPort`, `IAuthService` | `Port`, `IPORT` |
-| Sealed class | `PascalCase`, `sealed` | `sealed class RingBuffer` | `class RingBuffer` (if not designed for inheritance) |
-| Struct | `PascalCase`, prefer `readonly` | `readonly struct UUID` | `struct Uuid` |
-| Record struct | `readonly record struct` | `readonly record struct Edge(...)` | `record struct Edge(...)` |
-| Record class | `record class` | `record class NodeInstance(...)` | `record NodeInstance(...)` |
-| Sealed record (DTOs) | `sealed record` | `sealed record AuthResponse(...)` | `record AuthResponse(...)` |
-| Enum + members | `PascalCase` | `LogLevel`, `LogLevel.Warning` | `LOG_LEVEL`, `warning` |
-| Type parameter | `TPascalCase` | `T`, `TValue`, `TEntity` | `TValue`, `TYPE` |
-| Exception | `Exception` suffix | `PipelineCycleException` | `PipelineError` |
-| Public property | `PascalCase` | `Capacity`, `CreatedAt` | `capacity`, `_capacity` |
-| Private field | `_camelCase` | `_buffer`, `_dbContext` | `buffer`, `m_buffer` |
-| Constant | `PascalCase` | `TickFrequency` | `TICK_FREQUENCY` |
-| Parameter / local | `camelCase` | `options`, `result` | `Options`, `_result` |
-| Async method | `Async` suffix | `ExecuteAsync()` | `ExecuteAsync` on sync, `Execute()` on async |
-| Boolean method | `Try`/`Is`/`Has`/`Should` prefix | `TryRead()`, `HasValue()` | `ReadBool()` |
-| DbSet | `PascalCase` plural | `Users`, `Characters` | `UserList`, `userSet` |
-| Delegate | Prefer `Func`/`Action` | `Func<int, bool>` | `delegate bool Filter(int i);` |
-| Generic constraint | `where T :` | `where T : notnull` | omitting constraints |
+| Element | Convention |
+|---|---|
+| Class | `PascalCase` |
+| Abstract class | `PascalCase`, `Abstract` prefix or descriptive (not `Base` unless that's the actual name) |
+| Interface | `IPascalCase` |
+| Sealed class | `PascalCase` + `sealed` for concrete types not designed for inheritance |
+| Struct | `PascalCase`, prefer `readonly` |
+| Record struct | `readonly record struct` |
+| Record class | `record class` |
+| Sealed record (DTOs) | `sealed record` |
+| Enum + members | `PascalCase` |
+| Type parameter | `TPascalCase` |
+| Exception | `Exception` suffix |
+| Public property | `PascalCase` |
+| Private field | `_camelCase` |
+| Constant | `PascalCase` |
+| Parameter / local | `camelCase` |
+| Async method | `Async` suffix (only on genuinely async methods) |
+| Boolean method | `Try`/`Is`/`Has`/`Should` prefix |
+| DbSet | `PascalCase` plural |
+| Delegate | Prefer `Func`/`Action` over custom `delegate` |
+| Generic constraint | `where T :`, prefer explicit constraints (e.g. `where T : notnull`) |
 
 ### Constraints
 
@@ -43,16 +43,11 @@ Always abide to these coding conventions.
 
 **Prefer enums over strings** for fixed sets of values. Avoid magic numbers and magic strings — extract them into named constants or enum members.
 
+**Workarounds and Code Engineering**: WHENEVER you need a paragraph-long comment to justify a workaround, a specific hack, or an oddly conventioned function to justify WHY your code is OK, the code is wrong. ALWAYS fix these.
+
 ### Language Features (.NET 10 / C# 12+)
 
-**File-scoped namespaces** — always, never block-scoped:
-```csharp
-// Do
-namespace Shiron.Lib.Collections;
-
-// Don't
-namespace Shiron.Lib.Collections { ... }
-```
+**File-scoped namespaces** — always, never block-scoped.
 
 **Primary constructors** — use by default to capture parameters into fields/properties. Quick field initialization is fine, but keep all constructor logic minimal — only what's needed to set up fields.
 
@@ -210,12 +205,7 @@ Subfolder names are `PascalCase`.
 
 ### .csproj Conventions
 
-**All projects:**
-```xml
-<TargetFramework>net10.0</TargetFramework>
-<Nullable>enable</Nullable>
-<ImplicitUsings>enable</ImplicitUsings>
-```
+**All projects:** `net10.0` with `Nullable` + `ImplicitUsings` enabled (in `Directory.Build.props`).
 
 **Library:** `Microsoft.NET.Sdk`
 **Web API:** `Microsoft.NET.Sdk.Web` + `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>`
@@ -345,17 +335,7 @@ app.MapScalarApiReference(options => {
 
 ### TS Config (base)
 
-```json
-{
-    "strict": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noFallthroughCasesInSwitch": true,
-    "isolatedModules": true,
-    "composite": true
-}
-```
+Strict mode. All TS projects extend `tsconfig.base.json` — see that file for the exact compiler flags.
 
 ### App Structure
 
@@ -393,7 +373,7 @@ App folders: `kebab-case`. Source subfolders: `lowercase`.
 
 ### Framework
 
-xUnit + `[Fact]`. FluentAssertions for backend. `coverlet` for coverage. Testcontainers for integration.
+xUnit + `[Fact]`. xUnit Assertions for backend. `coverlet` for coverage. Testcontainers for integration.
 
 ### Structure
 
@@ -424,13 +404,12 @@ public class RingBufferTests {
 
 ### Assertions
 
-```csharp
-// Backend — FluentAssertions
-result.Should().HaveCount(3);
-result[0].Name.Should().Be("expected");
+Always use regular xUnit asserts — never FluentAssertions — in both backend and library tests.
 
-// Library — xUnit asserts
+```csharp
 Assert.Equal(expected, actual);
+Assert.Equal(3, result.Count);
+Assert.Equal("expected", result[0].Name);
 Assert.True(condition, "message");
 Assert.Throws<ArgumentException>(action);
 ```
@@ -516,20 +495,7 @@ pnpm add <package-name>
 
 ### NuGet
 
-**Central Package Management** in `Directory.Packages.props`. All versions declared centrally. `.csproj` files never include `Version`.
-
-```xml
-// Do — Directory.Packages.props
-<PackageVersion Include="xunit" Version="2.9.3" />
-
-// Do — .csproj
-<PackageReference Include="xunit"/>
-
-// Don't
-<PackageReference Include="xunit" Version="2.9.3"/>
-```
-
-Never use `packages.config`.
+**Central Package Management** in `Directory.Packages.props` — versions declared there via `<PackageVersion>`; `.csproj` uses bare `<PackageReference Include="..."/>` (CPM errors on inline `Version`). Never use `packages.config`.
 
 ### pnpm (Frontend)
 
@@ -566,8 +532,9 @@ POSTGRES_DB
 | Pattern | Example | Purpose |
 |---|---|---|
 | `main` | `main` | Stable |
-| `feature_<scope>_<detail>` | `feature_pipeline_di` | Features |
-| `<scope>_types` | `pipeline_types` | Exploration |
+| `dev` | `dev`| A temporary branch for changes that usually mirrors main |
+| `feat/<scope>-<detail>` | `feat/pipeline-di` | Features |
+| `<scope>-types` | `pipeline-types` | Exploration |
 
 ### Workflow
 
@@ -578,24 +545,17 @@ dotnet build --configuration Release
 dotnet test --configuration Release --verbosity minimal
 ```
 
-### Gitignore
-
-`bin/`, `obj/`, `.vscode/`, `.idea/`, `BenchmarkDotNet.Artifacts/`, log files, profile data.
-
-### Attributes
-
-`* text=auto eol=lf` — LF everywhere. C# files: `diff=csharp`.
+### Gitignore & Attributes
+Ignore build output (`bin/`, `obj/`), IDE dirs, `BenchmarkDotNet.Artifacts/`, logs. LF everywhere via `.gitattributes` + `.editorconfig`.
 
 ---
 
 ## Build & CI
 
 ### SDK
-
 Defined in `global.json` with `rollForward` and `allowPrerelease`.
 
 ### Commands
-
 ```bash
 dotnet restore
 dotnet build --configuration Release
@@ -603,18 +563,15 @@ dotnet test --configuration Release --verbosity minimal
 ```
 
 ### CI (GitHub Actions)
-
 - **Build+Test:** `restore` → `build Release` → `test Release`. Cross-platform on main branch.
 - **Quality gate:** `build /p:TreatWarningsAsErrors=true`. No tests.
 
 ### Root Scripts
-
 `lint`, `format`, `build`, `dev`, `migrate`, `clean` — all via `nx run-many`.
 
 ---
 
 ## Tooling
-
 | Tool | Config File | Scope |
 |---|---|---|
 | .NET | `.slnx` | Solution |
@@ -629,3 +586,84 @@ dotnet test --configuration Release --verbosity minimal
 | mise | `mise.toml` | Tool versions |
 
 Nx plugins: `@nx/js/typescript`, `@nx/dotnet`, `@nx/vite`.
+
+**Use Nx for monorepos.** A root-level `nx.json` (workspace config) is ALWAYS required. Prefer the inferred/crystal route — let Nx plugins infer targets from each tool's native config (`vite.config.ts`, `.csproj`, `tsconfig.json`, etc.). **Avoid per-project `project.json` files** (distinct from the workspace `nx.json`); only fall back to explicit target config when a target genuinely can't be inferred.
+
+Baseline `nx.json`:
+
+```json
+{
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "namedInputs": {
+        "default": ["{projectRoot}/src/**/*", "{projectRoot}/apps/**/*", "sharedGlobals"],
+        "production": [
+            "default",
+            "!{projectRoot}/**/*.Tests/**/*",
+            "!{projectRoot}/**/{bin,obj}/**/*",
+            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+            "!{projectRoot}/tsconfig.spec.json",
+            "!{projectRoot}/src/test-setup.[jt]s"
+        ],
+        "sharedGlobals": []
+    },
+    "plugins": [
+        {
+            "plugin": "@nx/js/typescript",
+            "options": {
+                "typecheck": { "targetName": "typecheck" },
+                "build": { "targetName": "build", "configName": "tsconfig.lib.json" }
+            }
+        },
+        { "plugin": "@nx/dotnet" },
+        { "plugin": "@nx/vite/plugin" }
+    ],
+    "neverConnectToCloud": true,
+    "analytics": false,
+    "parallel": 8
+}
+```
+
+# Commit Conventions
+ALWAYS execute the following steps in order when tasked to create a commit from scratch. When you've done work and are tasked to create a commit from your work, Step 1 can be skipped. When you're working in autonomous mode, tasked and reqeusted by the user, ALWAYS create commits regularry.
+
+### Step 1: Pre-Commit Sanity Check
+1. Check the current git status and diff to identify untracked or modified files.
+2. Scan the list for potentially sensitive or generated files that usually shouldn't be committed. Specifically look for:
+   - `node_modules/`
+   - `bin/` and `obj/`
+   - `.env` (NOTE: `.env.example` is safe and should be ignored by this warning).
+3. **PAUSE:** If any of these unwanted files are detected, STOP and ask the user: *"I found potentially unwanted files ([list them]). Do you want to proceed anyways, or should I add them to .gitignore?"* Wait for the user's explicitly approved response before moving to Step 2.
+
+### Step 2: Draft the Commit Message
+1. Analyze all the approved changes that have been made.
+2. DRAFT a commit message following the strict schema and rules below. Keep it in memory.
+
+**Schema:**
+`<type>[optional scope]: <description>`
+` `
+`[optional body]`
+
+**Rules & Overrides:**
+* **Type**: Use standard conventional commit types (e.g., feat, fix, chore, docs, refactor, test, build).
+* **Description (Override)**: The first word of the description (immediately following the colon and space) MUST be capitalized and in the past tense.
+* **Body Restriction**: ONLY include a body if the changes are highly complex and the single header line is strictly insufficient to explain the reasoning or scope. If the header is enough, omit the body entirely.
+* **Style**: Keep the message concise. Avoid overly verbose descriptions or unnecessary details. Always write in proper English.
+
+**Examples:**
+* feat(client): Added routing
+* fix: Fixed docker builds
+* refactor(api): Extracted authentication logic
+
+### Step 3: Format the Code
+Before staging, ensure the codebase is formatted based on the project type:
+* If it is a TypeScript/JavaScript project, run: `pnpm format`
+* If it is a C# project, run: `dotnet format`
+Wait for the formatting script to finish executing.
+
+### Step 4: Stage and Commit
+1. ALWAYS use `git add -A` to stage all files (including the newly formatted changes), unless the user explicitly instructs otherwise.
+2. Commit the changes using the exact message you drafted in Step 2.
+3. Verify that the commit was successful and output the final commit log.
+
+### CRITICAL RULES
+- **NEVER PUSH the commit to the remote repository.**
