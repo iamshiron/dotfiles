@@ -108,6 +108,7 @@ immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][56][Applets][60][Applets][74][Configuration][General]
+currentTab=streams
 migrated=true
 showVirtualDevices=true
 
@@ -179,7 +180,7 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][56][Applets][84][Configuration][General]
-history=#1b1221,#150a1b,#a78bfa
+history=#f7ced7,#1b1221,#150a1b,#a78bfa
 
 [Containments][56][Applets][84][Shortcuts]
 global=Meta+Ctrl+Shift+C

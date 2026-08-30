@@ -9,6 +9,9 @@ BorderActivate=9
 [Effect-windowview]
 BorderActivateAll=3
 
+[NightColor]
+Mode=Constant
+
 [Tiling][4dba744b-c789-42ba-9e3f-713ad5aa67ed][4f05d0c1-1273-4e10-a0c0-5f251e36fd56]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
